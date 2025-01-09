@@ -1,0 +1,81 @@
+<div class="header">
+  <h1>CRUD Operation</h1>
+</div>
+
+<div class="container">
+  <!-- Compact Search Input -->
+  <div class="search-container">
+    <input
+      type="text"
+      class="form-control search-input"
+      placeholder="Search A User......"
+      [(ngModel)]="searchText"
+    />
+    <i class="fa fa-search search-icon"></i>
+  </div>
+
+  <!-- Input Group -->
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="First Name"
+      [(ngModel)]="temp.firstName"
+    />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Last Name"
+      [(ngModel)]="temp.lastName"
+    />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Address"
+      [(ngModel)]="temp.address"
+    />
+    <button type="submit" class="btn btn-primary" (click)="adddata()">
+      {{ changevalue }}
+    </button>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredList(); let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.address }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteData(i)"
+          >
+            Delete
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="EditData(i)"
+          >
+            Update
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
